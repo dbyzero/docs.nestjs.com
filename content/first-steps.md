@@ -88,7 +88,9 @@ Whichever platform is used, it exposes its own application interface. These are 
 When you pass a type to the `NestFactory.create()` method, as in the example below, the `app` object will have methods available exclusively for that specific platform. Note, however, you don't **need** to specify a type **unless** you actually want to access the underlying platform API.
 
 ```typescript
-const app = await NestFactory.create<NestExpressApplication>(AppModule);
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify'
+
+const app = await NestFactory.create<NestExpressApplication>(AppModule, new FastifyAdapter());
 ```
 
 #### Running the application
